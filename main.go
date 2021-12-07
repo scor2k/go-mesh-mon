@@ -1,12 +1,13 @@
 package main
 
 import (
+	"github.com/op/go-logging"
 	"github.com/urfave/cli/v2"
 	"os"
 )
-import "github.com/op/go-logging"
 
-var log = logging.MustGetLogger("uptimestats")
+var appVersion = "0.1.0"
+var log = logging.MustGetLogger("gomeshmon")
 var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} ▶ %{level:.8s} %{shortfunc} %{color:reset} %{message}`,
 )
@@ -38,7 +39,7 @@ func main() {
 					if c.Bool("debug") {
 						appLogsLeveled.SetLevel(logging.DEBUG, "")
 					}
-
+					Serve()
 					return nil
 				},
 			},
