@@ -8,6 +8,10 @@ import (
 
 // Serve - start API server and handle requests
 func Serve() {
+	if err := initDB(); err != nil {
+		log.Fatal("Cannot init database")
+	}
+
 	router := mux.NewRouter()
 
 	router.HandleFunc("/health/check", HealthCheck).Methods("GET")
