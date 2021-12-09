@@ -33,6 +33,9 @@ func Serve() {
 		ReadTimeout:  300 * time.Second,
 	}
 
+	log.Info("Start cron jobs")
+	StartCron()
+
 	log.Info("Start listening on :1982")
 
 	log.Fatal(srv.ListenAndServe())
