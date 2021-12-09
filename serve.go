@@ -16,6 +16,8 @@ func Serve() {
 
 	router.HandleFunc("/health/check", HealthCheck).Methods("GET")
 
+	router.HandleFunc("/api/v1/ping", PingCheck).Methods("GET")
+
 	router.Methods("OPTIONS").HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE")
